@@ -1,4 +1,4 @@
-# -----------------------Application E-Commerce Flask------------------------
+# -----Application E-Commerce Flask-----
 
 # Description du Projet
 
