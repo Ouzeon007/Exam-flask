@@ -3863,4 +3863,7 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-co
+@property --tw-contain-style {
+  syntax: "*";
+  inherits: false;
+}
