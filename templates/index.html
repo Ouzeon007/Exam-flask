@@ -1,0 +1,46 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="flex items-center mt-10 mb-10">
+  <form action="" method="get" class="w-2/3 m-auto">
+    <input
+      type="text"
+      name="search"
+      placeholder="Search"
+      class="border-2 border-gray-300 p-1 rounded-lg"
+    />
+    <button
+      type="submit"
+      class="bg-blue-700 hover:bg-blue-800 text-white px-3 py-1 rounded-xl"
+    >
+      Search
+    </button>
+  </form>
+
+  <a
+    class="flex bg-blue-700 w-max hover:bg-blue-800 text-white px-3 py-1 rounded-xl justify-end mx-auto"
+    href="/add"
+  >
+    Ajouter
+  </a>
+</div>
+
+<div class="grid grid-cols-3 gap-4 w-3/4 bg-blue-50 m-auto p-5">
+  {% for product in products %}
+  <div class="bg-white group shadow-md rounded-lg hover:shadow-2xl">
+    <img
+      src="{{ product.img }}"
+      alt="{{ product.title }}"
+      class="bg-cover bg-gray-700 group-hover:opacity-50 relative w-full"
+    />
+    <div class="p-4">
+      <h2 class="text-lg font-semibold">{{ product.title }}</h2>
+      <p class="text-gray-600 truncate">{{ product.description }}</p>
+      <p class="text-gray-600 pb-2">{{ product.prix }} CFA</p>
+      <a href="{{ url_for('detail', id=product.id) }}" class="bg-blue-500 hover:bg-blue-700 text-white px-3 py-1 rounded-xl inline-block">
+        Detail
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

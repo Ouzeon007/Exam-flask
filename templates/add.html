@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<form action="{{ url_for('add') }}" enctype="multipart/form-data" method="post" class="max-w-2xl mx-auto mt-8 mb-4">
+  {{ form.hidden_tag() }}  <!-- Protection CSRF -->
+  <div class="bg-white shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl">
+    <div class="bg-blue-800 p-4 text-white">
+      <h2 class="text-xl font-bold text-center">Ajouter un nouveau produit</h2>
+    </div>
+    
+    <div class="p-6 space-y-4">
+      <!-- Libellé -->  
+      <div class="form-group">
+        <label for="libelle" class="block text-sm font-medium text-gray-700 mb-1">{{form.libelle.label}}</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          </div>
+          {{form.libelle(class="pl-10 w-full py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200")}}
+        </div>
+        {% for error in form.libelle.errors %}
+          <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+        {% endfor %}
+      </div>
+
+      <!-- Prix -->
+      <div class="form-group">
+        <label for="prix" class="block text-sm font-medium text-gray-700 mb-1">{{form.prix.label}}</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            
+          </div>
+          {{form.prix(class="pl-10 w-full py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200")}}
+        </div>
+        {% for error in form.prix.errors %}
+          <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+        {% endfor %}
+      </div>
+
+      <!-- Quantité en stock -->
+      <div class="form-group">
+        <label for="qteStock" class="block text-sm font-medium text-gray-700 mb-1">{{form.qteStock.label}}</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          </div>
+          {{form.qteStock(class="pl-10 w-full py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200")}}
+        </div>
+        {% for error in form.qteStock.errors %}
+          <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+        {% endfor %}
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description" class="block text-sm font-medium text-gray-700 mb-1">{{form.description.label}}</label>
+        <div class="relative">
+          <div class="absolute top-3 left-3 flex items-start pointer-events-none">
+          </div>
+          {{form.description(class="pl-10 w-full py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200", rows="3")}}
+        </div>
+        {% for error in form.description.errors %}
+          <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+        {% endfor %}
+      </div>
+
+      <!-- Image -->
+      <div class="form-group">
+        <label for="img" class="block text-sm font-medium text-gray-700 mb-1">{{form.img.label}}</label>
+        <div class="relative">
+          {{form.img(class="w-full py-2 border border-gray-300 rounded-lg  focus:outline-none ")}}
+        </div>
+        {% for error in form.img.errors %}
+          <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <div class="px-6 py-4 bg-gray-50 flex justify-end">
+      <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-800 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ">
+        Ajouter le produit
+      </button>
+    </div>
+  </div>
+</form>
+{% endblock %}
